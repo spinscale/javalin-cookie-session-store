@@ -41,7 +41,9 @@ public class CookieSessionStorePlugin implements Plugin {
     private final String cookieName;
 
     /**
-     * @see #CookieSessionStorePlugin(String, SecretKey, Predicate<String>)
+     * @param key               The secret key representing the secret to encrypt the cookie
+     * @param attributeFilter   A filter applied against the request attributes to decide if an attribute should be serialized into the cookie
+     * @see #CookieSessionStorePlugin(String, SecretKey, Predicate)
      */
     public CookieSessionStorePlugin(final SecretKey key, Predicate<String> attributeFilter) {
         this(COOKIE_NAME, key, attributeFilter);
