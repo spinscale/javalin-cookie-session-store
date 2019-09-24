@@ -1,0 +1,75 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+    }
+}
+
+plugins {
+    id 'java-library'
+    id 'jacoco'
+}
+
+apply plugin: 'com.bmuschko.nexus'
+
+repositories {
+    jcenter()
+}
+
+group = 'de.spinscale.javalin'
+name = 'javalin-cookie-session-store'
+version = '0.1.0-SNAPSHOT'
+
+dependencies {
+    runtime 'io.jsonwebtoken:jjwt-impl:0.10.7'
+    runtime 'io.jsonwebtoken:jjwt-orgjson:0.10.7'
+
+    compile 'io.javalin:javalin:3.5.0'
+    compile 'io.jsonwebtoken:jjwt-api:0.10.7'
+
+    testCompile "org.assertj:assertj-core:3.11.1"
+    testCompile 'org.mockito:mockito-core:3.0.0'
+    testCompile 'org.slf4j:slf4j-simple:1.7.26'
+    testCompile 'com.squareup.okhttp3:okhttp:4.2.0'
+
+    // jupiter support
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+modifyPom {
+    project {
+        name 'Cookie based session store for Javalin'
+        description 'Allows to store session data in a JWT based cookie'
+        url 'https://github.com/spinscale/javalin-cookie-session-store'
+        inceptionYear '2019'
+
+        scm {
+            url 'https://github.com/spinscale/javalin-cookie-session-store'
+            connection 'scm:https://spinscale@github.com/spinscale/javalin-cookie-session-store.git'
+            developerConnection 'scm:git://github.com/spinscale/javalin-cookie-session-store.git'
+        }
+
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
+        }
+
+        developers {
+            developer {
+                id 'spinscale'
+                name 'Alexander Reelsen'
+                email 'alr@spinscale.de'
+            }
+        }
+    }
+}
