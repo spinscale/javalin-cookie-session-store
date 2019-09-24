@@ -19,7 +19,6 @@ repositories {
 }
 
 group = 'de.spinscale.javalin'
-name = 'javalin-cookie-session-store'
 version = '0.1.0-SNAPSHOT'
 
 dependencies {

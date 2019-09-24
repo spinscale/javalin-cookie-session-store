@@ -46,7 +46,8 @@ class CookieSessionStorePluginTests {
     @Test
     void runFullBlownIntegrationTest() throws Exception {
         final Predicate<String> attributeFilter = s -> s.startsWith("session_");
-        final Javalin javalin = Javalin.create(config -> config.registerPlugin(new CookieSessionStorePlugin(key, attributeFilter)));
+        final String cookieName = "MY_COOKIE_NAME";
+        final Javalin javalin = Javalin.create(config -> config.registerPlugin(new CookieSessionStorePlugin(cookieName, key, attributeFilter)));
 
         javalin.get("/", ctx -> {
             ctx.attribute("session_name", "Alexander");
@@ -73,7 +74,7 @@ class CookieSessionStorePluginTests {
             try (Response response = httpClient.newCall(new Request.Builder().url(host + "/").build()).execute()) {
                 assertThat(response.code()).isEqualTo(200);
                 cookieHeader = response.header("Set-Cookie");
-                assertThat(cookieHeader).matches(s -> s.contains("JAVALIN_SESSION_COOKIE"));
+                assertThat(cookieHeader).matches(s -> s.contains(cookieName));
             }
 
             final Request.Builder requestWithCookie = new Request.Builder().url(host + "/name");
