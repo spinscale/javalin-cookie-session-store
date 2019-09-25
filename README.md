@@ -37,8 +37,9 @@ Register the plugin on javalin startup
 SecretKey key = Keys.hmacShaKeyFor("some_secret_with_more_than_32_chars".getBytes());
 Predicate<String> attributeFilter = s -> s.startsWith("session_");
 
-Javalin javalin = Javalin.create();
-javalin.config.registerPlugin(new CookieSessionStorePlugin(key, attributeFilter));
+Javalin javalin = Javalin.create(config -> {
+    config.registerPlugin(new CookieSessionStorePlugin(key, attributeFilter));
+});
 ```
 
 The secret should be retrieved from an external configuration and should not
@@ -60,7 +61,7 @@ Retrieving an attribute
 ```
 javalin.get("/name", ctx -> {
   String name = ctx.attribute("session_name");
-  ctx.json(Collections.singletonMap("name", name);
+  ctx.json(Collections.singletonMap("name", name));
 });
 
 ```
