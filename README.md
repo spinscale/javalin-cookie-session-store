@@ -20,6 +20,17 @@ Add the dependency to your gradle file.
 compile 'de.spinscale.javalin:javalin-cookie-session-store:0.1.0'
 ```
 
+If you are using maven
+
+```
+<dependency>
+    <groupId>de.spinscale.javalin</groupId>
+    <artifactId>javalin-cookie-session-store</artifactId>
+    <version>0.1.0</version>
+</dependency>
+
+```
+
 Register the plugin on javalin startup
 
 ```java
