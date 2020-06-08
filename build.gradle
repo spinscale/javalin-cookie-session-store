@@ -16,17 +16,17 @@ dependencies {
     runtime 'io.jsonwebtoken:jjwt-impl:0.11.1'
     runtime 'io.jsonwebtoken:jjwt-orgjson:0.11.1'
 
-    compile 'io.javalin:javalin:3.8.0'
+    compile 'io.javalin:javalin:3.9.0'
     compile 'io.jsonwebtoken:jjwt-api:0.11.1'
 
-    testCompile "org.assertj:assertj-core:3.15.0"
+    testCompile "org.assertj:assertj-core:3.16.1"
     testCompile 'org.mockito:mockito-core:3.3.3'
-    testCompile 'org.slf4j:slf4j-simple:1.7.26'
-    testCompile 'com.squareup.okhttp3:okhttp:4.4.1'
+    testCompile 'org.slf4j:slf4j-simple:1.7.30'
+    testCompile 'com.squareup.okhttp3:okhttp:4.7.2'
 
     // jupiter support
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
 }
 
 test {
